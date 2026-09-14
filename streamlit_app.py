@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(page_title="SCOTTY Chatbot", page_icon="🤖")
-st.title("--------- SCOTTY ---------")
+st.title("---- SCOTTY ----")
 st.subheader("Virtual Assistance Program by TSTOC")
 
 if "menu" not in st.session_state:
