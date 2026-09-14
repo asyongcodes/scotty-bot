@@ -10,6 +10,7 @@ if "menu" not in st.session_state:
 
 # --- MAIN MENU ---
 if st.session_state.menu == "main":
+    st.write("")
     st.write("Hi, I am SCOTTY! Here are my SERVICES:")
     if st.button("1. ASSISTANCE"):
         st.session_state.menu = "assistance"
