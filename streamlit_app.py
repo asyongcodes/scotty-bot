@@ -78,9 +78,9 @@ elif st.session_state.menu == "other":
 ph_tz = pytz.timezone('Asia/Manila')
 
 while True:
-    # Explicitly fetch time in Asia/Manila timezone
-    current_time = datetime.now(ph_tz).strftime("%A, %B %d, %Y | %I:%M:%S %p")
+    # Formatted to place time on a new line (\n) right below the date
+    date_str = datetime.now(ph_tz).strftime("%A, %B %d, %Y")
+    time_str = datetime.now(ph_tz).strftime("%I:%M:%S %p")
     
-    # st.caption creates a smaller text element that cleanly sits above the title
-    clock_placeholder.caption(f"⏱️ **Philippine Time:** {current_time}")
+    clock_placeholder.caption(f"**{date_str}**\n\n**{time_str}**")
     time.sleep(1)
