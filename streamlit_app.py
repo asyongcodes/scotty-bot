@@ -1,6 +1,9 @@
+from datetime import datetime
+import time
 import streamlit as st
 
 st.set_page_config(page_title="SCOTTY Chatbot", page_icon="🤖")
+clock_placeholder = st.empty()
 st.title("---- SCOTTY ----")
 st.subheader("Virtual Assistance Program")
 st.subheader("by TSTOC")
@@ -69,4 +72,8 @@ elif st.session_state.menu == "other":
     if st.button("⬅️ BACK to Main Menu"):
         st.session_state.menu = "main"
         st.rerun()
-      
+
+while True:
+    current_time = datetime.now().strftime("%A, %B %d, %Y | %I:%M:%S %p")
+    clock_placeholder.markdown(f"⏱️ **{current_time}**\n---")
+    time.sleep(1)
