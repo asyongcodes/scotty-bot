@@ -1,5 +1,6 @@
 from datetime import datetime
 import time
+import pytz
 import streamlit as st
 
 st.set_page_config(page_title="SCOTTY Chatbot", page_icon="🤖")
@@ -73,7 +74,10 @@ elif st.session_state.menu == "other":
         st.session_state.menu = "main"
         st.rerun()
 
+ph_tz = pytz.timezone('Asia/Manila')
 while True:
-    current_time = datetime.now().strftime("%A, %B %d, %Y | %I:%M:%S %p")
-    clock_placeholder.markdown(f"⏱️ **{current_time}**\n---")
+    current_time = datetime.now(ph_tz).strftime("%A, %B %d, %Y | %I:%M:%S %p")
+    
+    # st.caption creates a smaller text element that cleanly sits above the title
+    clock_placeholder.caption(f"⏱️ **Philippine Time:** {current_time}")
     time.sleep(1)
