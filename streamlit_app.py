@@ -1,6 +1,10 @@
+from datetime import datetime
+import time
+import pytz
 import streamlit as st
 
 st.set_page_config(page_title="SCOTTY Chatbot", page_icon="🤖")
+clock_placeholder = st.empty()
 st.title("---- SCOTTY ----")
 st.subheader("Virtual Assistance Program")
 st.subheader("by TSTOC")
@@ -69,3 +73,14 @@ elif st.session_state.menu == "other":
     if st.button("⬅️ BACK to Main Menu"):
         st.session_state.menu = "main"
         st.rerun()
+
+# --- TICKING LOOP (PHILIPPINES TIME) ---
+ph_tz = pytz.timezone('Asia/Manila')
+
+while True:
+    # Explicitly fetch time in Asia/Manila timezone
+    current_time = datetime.now(ph_tz).strftime("%A, %B %d, %Y | %I:%M:%S %p")
+    
+    # st.caption creates a smaller text element that cleanly sits above the title
+    clock_placeholder.caption(f"⏱️ **Philippine Time:** {current_time}")
+    time.sleep(1)
